@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Vue Tauri Starter",
-  "version": "0.1.0",
-  "identifier": "com.example.vue-tauri-starter",
+  "productName": "Code Sandbox",
+  "version": "1.0.0",
+  "identifier": "dev.codesandbox.app",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -10,29 +10,40 @@
     "frontendDist": "../dist"
   },
   "app": {
+    "withGlobalTauri": false,
     "windows": [
       {
-        "title": "Vue Tauri Starter",
-        "width": 1000,
-        "height": 700,
+        "title": "Code Sandbox",
+        "width": 1280,
+        "height": 820,
         "minWidth": 360,
-        "minHeight": 600,
-        "resizable": true
+        "minHeight": 480,
+        "resizable": true,
+        "fullscreen": false,
+        "dragDropEnabled": false
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://esm.sh; connect-src 'self' ipc: http://ipc.localhost https://emkc.org https://cdn.jsdelivr.net https://esm.sh; frame-src 'self' blob: data:"
     }
   },
   "bundle": {
     "active": true,
     "targets": "all",
+    "category": "DeveloperTool",
+    "shortDescription": "Code playground for web, desktop and mobile",
+    "longDescription": "Code Sandbox lets you edit HTML, CSS and scripts with a live preview and run programs in twelve languages from a single codebase.",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "linux": {
+      "deb": {
+        "depends": []
+      }
+    }
   }
 }

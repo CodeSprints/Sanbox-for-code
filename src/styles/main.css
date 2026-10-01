@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  --color-surface: oklch(0.99 0.004 260);
+  --color-surface-raised: oklch(1 0 0);
+  --color-surface-sunken: oklch(0.96 0.006 260);
+  --color-content: oklch(0.21 0.03 262);
+  --color-content-muted: oklch(0.45 0.02 262);
+  --color-line: oklch(0.89 0.01 262);
+  --color-control: oklch(0.6 0.02 262);
+  --color-brand: oklch(0.49 0.17 262);
+  --color-brand-contrast: oklch(0.99 0.01 262);
+  --color-danger: oklch(0.45 0.19 26);
+  --color-danger-surface: oklch(0.95 0.04 26);
+  --color-success: oklch(0.45 0.14 155);
+  --color-success-surface: oklch(0.95 0.05 155);
+  --color-warning: oklch(0.52 0.13 75);
+  --color-warning-surface: oklch(0.95 0.06 85);
+  --color-syntax-keyword: oklch(0.45 0.19 300);
+  --color-syntax-name: oklch(0.3 0.03 262);
+  --color-syntax-property: oklch(0.44 0.13 240);
+  --color-syntax-variable: oklch(0.36 0.05 262);
+  --color-syntax-function: oklch(0.47 0.15 265);
+  --color-syntax-type: oklch(0.46 0.12 190);
+  --color-syntax-tag: oklch(0.47 0.17 25);
+  --color-syntax-attribute: oklch(0.48 0.13 70);
+  --color-syntax-string: oklch(0.44 0.13 145);
+  --color-syntax-number: oklch(0.48 0.15 50);
+  --color-syntax-comment: oklch(0.52 0.02 262);
+  --color-syntax-operator: oklch(0.42 0.08 300);
+  --color-syntax-punctuation: oklch(0.45 0.02 262);
+  --color-syntax-meta: oklch(0.45 0.09 330);
+  --color-syntax-heading: oklch(0.4 0.14 265);
+  --color-syntax-link: oklch(0.45 0.14 240);
+  --color-accent-html: oklch(0.62 0.18 42);
+  --color-accent-css: oklch(0.56 0.14 242);
+  --color-accent-script: oklch(0.62 0.15 95);
+
+  --radius-panel: 0.875rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-surface: oklch(0.19 0.02 262);
+  --color-surface-raised: oklch(0.24 0.02 262);
+  --color-surface-sunken: oklch(0.15 0.02 262);
+  --color-content: oklch(0.96 0.01 262);
+  --color-content-muted: oklch(0.78 0.02 262);
+  --color-line: oklch(0.36 0.02 262);
+  --color-control: oklch(0.6 0.02 262);
+  --color-brand: oklch(0.78 0.13 254);
+  --color-brand-contrast: oklch(0.18 0.03 262);
+  --color-danger: oklch(0.79 0.13 22);
+  --color-danger-surface: oklch(0.3 0.08 22);
+  --color-success: oklch(0.82 0.14 155);
+  --color-success-surface: oklch(0.29 0.07 155);
+  --color-warning: oklch(0.85 0.13 85);
+  --color-warning-surface: oklch(0.3 0.07 85);
+  --color-syntax-keyword: oklch(0.8 0.14 305);
+  --color-syntax-name: oklch(0.92 0.01 262);
+  --color-syntax-property: oklch(0.82 0.11 235);
+  --color-syntax-variable: oklch(0.9 0.02 262);
+  --color-syntax-function: oklch(0.82 0.13 265);
+  --color-syntax-type: oklch(0.84 0.11 190);
+  --color-syntax-tag: oklch(0.79 0.14 25);
+  --color-syntax-attribute: oklch(0.86 0.13 85);
+  --color-syntax-string: oklch(0.84 0.14 150);
+  --color-syntax-number: oklch(0.83 0.13 55);
+  --color-syntax-comment: oklch(0.7 0.02 262);
+  --color-syntax-operator: oklch(0.82 0.1 305);
+  --color-syntax-punctuation: oklch(0.78 0.02 262);
+  --color-syntax-meta: oklch(0.82 0.1 330);
+  --color-syntax-heading: oklch(0.85 0.12 265);
+  --color-syntax-link: oklch(0.82 0.12 240);
+  --color-accent-html: oklch(0.76 0.16 42);
+  --color-accent-css: oklch(0.74 0.13 242);
+  --color-accent-script: oklch(0.84 0.15 95);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html,
+  body,
+  #app {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-surface);
+    color: var(--color-content);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  textarea,
+  select,
+  button,
+  input {
+    font: inherit;
+    color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .panel {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border-width: 1px;
+    border-radius: var(--radius-panel);
+    background-color: var(--color-surface-raised);
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-bottom-width: 1px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .panel-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-content-muted);
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -4rem;
+  z-index: 50;
+  border-radius: 0.5rem;
+  background-color: var(--color-brand);
+  color: var(--color-brand-contrast);
+  padding: 0.625rem 1rem;
+  font-weight: 600;
+  transition: top 150ms ease;
+}
+
+.skip-link:focus-visible {
+  top: 0.75rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

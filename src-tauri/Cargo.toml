@@ -1,12 +1,14 @@
 [package]
-name = "vue-tauri-template"
-version = "0.1.0"
-description = "Vue Tauri starter"
-authors = ["you"]
+name = "code-sandbox"
+version = "1.0.0"
+description = "Cross-platform code playground for web, desktop and mobile"
+authors = ["Code Sandbox contributors"]
 edition = "2021"
+rust-version = "1.77.2"
+default-run = "code-sandbox"
 
 [lib]
-name = "vue_tauri_template_lib"
+name = "code_sandbox_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
@@ -14,5 +16,17 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 tauri = { version = "2", features = [] }
+tauri-plugin-os = "2"
+tauri-plugin-clipboard-manager = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-window-state = "2"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
