@@ -1,49 +1,56 @@
-# Vue + Tauri Template
+# Code Sandbox
 
-## Requirements
+Edytor kodu z podglądem na żywo dla przeglądarki, komputera i telefonu — jeden kod źródłowy, trzy wydania.
 
-* Node.js 20.19+ or 22.12+, npm 10+
-* Rust stable
-* Tauri system dependencies: https://v2.tauri.app/start/prerequisites/
+A live code playground for web, desktop and mobile — one codebase, three editions.
 
-## Desktop
+## Stack
+
+Vue 3 · TypeScript · Tailwind CSS 4 · Pinia · Vite 7 · Tauri 2 · Vitest · axe-core
+
+## Szybki start / Quick start
 
 ```bash
 npm install
-npm run desktop:dev
-npm run desktop:build
+npm run dev           # http://localhost:1420
+npm run desktop:dev   # okno Tauri / Tauri window
+npm run android:dev   # Android (po npm run android:init)
+npm run verify        # lint + typy + testy / lint + types + tests
 ```
 
-## Android
+## Funkcje / Features
 
-Install Android Studio, the required SDK/NDK, and configure the required environment variables according to the Tauri documentation. Then:
+| PL                                                   | EN                                                |
+| ---------------------------------------------------- | ------------------------------------------------- |
+| Projekt wielu plików budowany w przeglądarce         | Multi-file project built in the browser           |
+| HTML, Markdown, EJS, CSS, JSON, TS, TSX, Vue, Svelte | HTML, Markdown, EJS, CSS, JSON, TS, TSX, Vue, Svelte |
+| Kolorowanie semantyczne i oznaczanie błędów          | Semantic highlighting and error marking           |
+| Dowolny pakiet npm przez esm.sh                      | Any npm package through esm.sh                    |
+| Konsola podglądu i rozmiary telefon, tablet, komputer | Preview console and phone, tablet, desktop sizes |
+| Siedem bibliotek UI do wyboru                        | Seven optional UI libraries                       |
+| Uruchamianie programów w dwunastu językach           | Program execution in twelve languages             |
+| Po dwadzieścia bibliotek dla C++, C#, Rusta, Pythona, Javy i Kotlina | Twenty libraries each for C++, C#, Rust, Python, Java and Kotlin |
+| Interfejs po polsku i angielsku                      | Polish and English interface                      |
+| Motyw jasny, ciemny i systemowy                      | Light, dark and system theme                      |
+| Zgodność z WCAG 2.2 AA                               | WCAG 2.2 AA conformance                           |
+| Układ responsywny od 320 pikseli                     | Responsive layout from 320 pixels                 |
 
-```bash
-npm run android:init
-npm run android:dev
-npm run android:build
+## Dokumentacja / Documentation
+
+Pełna dokumentacja w języku polskim i angielskim: [`docs/README.md`](docs/README.md).
+
+Full documentation in Polish and English: [`docs/README.md`](docs/README.md).
+
+## Struktura / Structure
+
+```
+src/           aplikacja Vue / the Vue application
+ci/            przepływ CI do skopiowania / CI workflow to copy
+src-tauri/     powłoka Rust / the Rust shell
+tests/         testy / tests
+docs/          dokumentacja / documentation
 ```
 
-## iOS (macOS only)
+## Licencja / License
 
-Requires Xcode and CocoaPods:
-
-```bash
-npm run ios:init
-npm run ios:dev
-npm run ios:build
-```
-
-## Before Getting Started
-
-1. Change the `name` in `package.json`.
-2. Change `productName` and the unique `identifier` in `src-tauri/tauri.conf.json`.
-3. Change the package and library name in `src-tauri/Cargo.toml` and the corresponding invocation in `src-tauri/src/main.rs`.
-4. Replace `app-icon.svg`, then run `npx tauri icon app-icon.svg`.
-5. Limit permissions in `src-tauri/capabilities` and configure the CSP before production once you know which sources are required.
-
-## Quality Checks
-
-```bash
-npm run typecheck && npm run lint && npm test && npm run build
-```
+MIT
